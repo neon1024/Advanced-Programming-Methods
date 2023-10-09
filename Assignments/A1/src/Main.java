@@ -1,17 +1,31 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+/*
+3. Intr-un service se afla in reparatie mai multe
+masini, camioane si motociclete. Sa se afiseze
+toate autovehiculele ce au costul de reparatie
+mai mare de 1000Ron.
+ */
+
+import controller.Controller;
+import repository.Repository;
+import repository.Vehicles;
+import model.Car;
+import model.Truck;
+import model.Motorbike;
+import view.View;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Repository repository = new Vehicles(10);
+        Controller controller = new Controller(repository);
+        View view = new View(controller);
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        controller.add(new Car(100));
+        controller.add(new Truck(200));
+        controller.add(new Motorbike(300));
+        controller.add(new Car(1000));
+        controller.add(new Truck(10000));
+        controller.add(new Motorbike(10000));
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        view.show();
     }
 }
