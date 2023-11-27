@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6863ac26-9ee6-403d-ae3c-2d49a487a9ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exceptions/ControllerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/RepositoryException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/Repository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/adts/IHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/adts/IHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/adts/MyHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/adts/MyHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/IRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="6863ac26-9ee6-403d-ae3c-2d49a487a9ae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
