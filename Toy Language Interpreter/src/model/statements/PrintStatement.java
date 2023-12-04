@@ -1,4 +1,4 @@
-package model.statement;
+package model.statements;
 
 import model.adts.IDictionary;
 import model.adts.IHeap;

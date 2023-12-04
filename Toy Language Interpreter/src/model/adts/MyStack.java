@@ -16,6 +16,13 @@ public class MyStack<T> implements IStack<T> {
     }
 
     @Override
+    public T top() throws ADTException {
+        if(this.stack.isEmpty()) throw new ADTException("Stack is empty");
+
+        return this.stack.peek();
+    }
+
+    @Override
     public T pop() throws ADTException {
         try {
             return this.stack.pop();

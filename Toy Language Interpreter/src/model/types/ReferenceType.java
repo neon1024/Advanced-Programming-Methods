@@ -19,6 +19,9 @@ public class ReferenceType implements Type {
         return anotherObject instanceof ReferenceType;
     }
 
+    public Type getLocationType() {
+        return this.locationType;
+    }
 
     @Override
     public Value defaultValue() {
