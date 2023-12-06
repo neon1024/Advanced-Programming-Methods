@@ -32,4 +32,8 @@ public class ReferenceType implements Type {
     public Type deepCopy() {
         return new ReferenceType(this.locationType);
     }
+
+    public String toString() {
+        return "Ref" + " " + this.locationType;
+    }
 }

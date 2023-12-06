@@ -6,10 +6,10 @@ import exceptions.ExpressionException;
 import model.types.Type;
 import model.values.Value;
 
-public class VarNameExpression implements Expression {
+public class VariableNameExpression implements Expression {
     String id;
 
-    public VarNameExpression(String id) {
+    public VariableNameExpression(String id) {
         this.id = id;
     }
 
@@ -25,7 +25,7 @@ public class VarNameExpression implements Expression {
 
     @Override
     public Expression deepCopy() {
-        return new VarNameExpression(this.id);
+        return new VariableNameExpression(this.id);
     }
 
     public String toString() {

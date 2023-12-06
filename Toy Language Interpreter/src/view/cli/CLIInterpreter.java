@@ -40,6 +40,9 @@ public class CLIInterpreter {
 
     private static void addCommands(String logFilePath, TextMenu menu) {
         List<Statement> programs = ProgramGenerator.getPrograms();
+
+        System.out.println(programs.size());
+
         for (int i = 0; i < programs.size(); i++) {
             Statement program = programs.get(i);
 

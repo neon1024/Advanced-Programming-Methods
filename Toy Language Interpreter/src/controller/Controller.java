@@ -53,7 +53,7 @@ public class Controller {
 
             this.repository.getHeap().setContent(
                     this.garbageCollector(
-                            this.getAddressesFromSymbolTable(this.repository.getSymbolTable().values()),
+                            this.getAddressesFromTableOfSymbols(this.repository.getSymbolTable().values()),
                             this.repository.getHeap().getContent()
                     ));
 
@@ -120,7 +120,7 @@ public class Controller {
         while (!programStates.isEmpty()) {
             this.repository.getHeap().setContent(
                     this.garbageCollector(
-                            this.getAddressesFromSymbolTable(this.repository.getSymbolTable().values()),
+                            this.getAddressesFromTableOfSymbols(this.repository.getSymbolTable().values()),
                             this.repository.getHeap().getContent()
                     ));
 
@@ -143,7 +143,7 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
-    public Map<Integer, Value> garbageCollector(List<Integer> symbolTableAddresses, Map<Integer, Value> heap) {
+    public Map<Integer, Value> garbageCollector(List<Integer> TableOfSymbolsAddresses, Map<Integer, Value> heap) {
         return heap.entrySet().stream()
                 .filter(entry -> {
                     for (Value value : heap.values()) {
@@ -153,13 +153,13 @@ public class Controller {
                             }
                         }
                     }
-                    return symbolTableAddresses.contains(entry.getKey());
+                    return TableOfSymbolsAddresses.contains(entry.getKey());
                 })
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public List<Integer> getAddressesFromSymbolTable(Collection<Value> symbolTableValues) {
-        return symbolTableValues.stream()
+    public List<Integer> getAddressesFromTableOfSymbols(Collection<Value> TableOfSymbolsValues) {
+        return TableOfSymbolsValues.stream()
                 .filter(value -> value instanceof ReferenceValue)
                 .map(value -> ((ReferenceValue) value).getAddress())
                 .toList();

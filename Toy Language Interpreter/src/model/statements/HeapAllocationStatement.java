@@ -21,28 +21,32 @@ public class HeapAllocationStatement implements Statement {
     }
 
     @Override
-    public ProgramState execute(ProgramState state) throws StatementException {
-        IDictionary<String, Value> symbolTable = state.getTableOfSymbols();
-        IHeap heap = state.getHeap();
+    public ProgramState execute(ProgramState programState) throws StatementException {
+        IDictionary<String, Value> tableOfSymbols = programState.getTableOfSymbols();
+        IHeap heap = programState.getHeap();
 
-        if (!symbolTable.search(this.id)) {
+        if (!tableOfSymbols.search(this.id)) {
             throw new StatementException("Variable " + this.id + " is not defined.");
         }
-        Value idValue = symbolTable.get(this.id);
+
+        Value idValue = tableOfSymbols.get(this.id);
+
         if (!idValue.getType().equals(new ReferenceType(null))) {
             throw new StatementException("Variable " + this.id + " is not a reference type.");
         }
 
         try {
-            Value expressionValue = this.expression.eval(symbolTable, heap);
+            Value expressionValue = this.expression.eval(tableOfSymbols, heap);
             ReferenceValue referenceValue = (ReferenceValue) idValue;
+
             if (!expressionValue.getType().equals(referenceValue.getLocationType())) {
                 throw new StatementException("Declared type of variable " + this.id +
                         " and type of the assigned expression do not match.");
             }
 
-            int id = heap.add(expressionValue);
-            symbolTable.update(this.id, new ReferenceValue(id, expressionValue.getType()));
+            int address = heap.add(expressionValue);
+            tableOfSymbols.update(this.id, new ReferenceValue(address, expressionValue.getType()));
+
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
@@ -62,6 +66,7 @@ public class HeapAllocationStatement implements Statement {
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
+
         return typeEnvironment;
     }
 

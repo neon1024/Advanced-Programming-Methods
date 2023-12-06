@@ -24,19 +24,22 @@ public class WhileStatement implements Statement {
     @Override
     public ProgramState execute(ProgramState state) throws StatementException {
         IStack<Statement> executionStack = state.getExecutionStack();
-        IDictionary<String, Value> symbolTable = state.getTableOfSymbols();
+        IDictionary<String, Value> tableOfSymbols = state.getTableOfSymbols();
         IHeap heap = state.getHeap();
 
         try {
-            Value value = this.expression.eval(symbolTable, heap);
+            Value value = this.expression.eval(tableOfSymbols, heap);
             if (!value.getType().equals(new BoolType())) {
                 throw new StatementException("Expression " + this.expression + " is not a boolean");
             }
+            
             BoolValue boolValue = (BoolValue) value;
+            
             if (boolValue.getValue()) {
                 executionStack.push(this);
                 executionStack.push(this.statement);
             }
+            
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }

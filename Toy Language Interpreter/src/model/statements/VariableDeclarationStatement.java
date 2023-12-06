@@ -7,11 +7,11 @@ import model.types.Type;
 import model.values.Value;
 
 
-public class VarDecStatement implements Statement {
+public class VariableDeclarationStatement implements Statement {
     String id;
     Type type;
 
-    public VarDecStatement(String id, Type type) {
+    public VariableDeclarationStatement(String id, Type type) {
         this.id = id;
         this.type = type;
     }
@@ -37,7 +37,7 @@ public class VarDecStatement implements Statement {
 
     @Override
     public Statement deepCopy() {
-        return new VarDecStatement(this.id, this.type.deepCopy());
+        return new VariableDeclarationStatement(this.id, this.type.deepCopy());
     }
 
     public String toString() {

@@ -50,9 +50,11 @@ public class AssignmentStatement implements Statement {
                 throw new StatementException("Declared type of variable " + this.id +
                         " and type of the assigned expression do not match.");
             }
+
         } catch (ExpressionException e) {
             throw new StatementException(e.getMessage());
         }
+
         return typeEnvironment;
     }
 
