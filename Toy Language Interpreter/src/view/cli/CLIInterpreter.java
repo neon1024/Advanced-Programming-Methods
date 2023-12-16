@@ -1,5 +1,6 @@
 package view.cli;
 
+import exceptions.RepositoryException;
 import model.adts.*;
 import controller.Controller;
 import model.ProgramState;
@@ -10,6 +11,7 @@ import view.commands.ExitCommand;
 import view.commands.RunExampleCommand;
 import programGenerator.ProgramGenerator;
 
+import java.io.File;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -18,11 +20,18 @@ import java.util.Scanner;
 public class CLIInterpreter {
     public static void main(String[] args) {
         TextMenu menu = new TextMenu();
-        CLIInterpreter.addCommands(CLIInterpreter.getLogFile(), menu);
+
+        try {
+            CLIInterpreter.addCommands(CLIInterpreter.getLogFile(), menu);
+
+        } catch (RepositoryException re) {
+            System.out.println(re.getMessage());
+        }
+
         menu.show();
     }
 
-    private static String getLogFile() {
+    private static String getLogFile() throws RepositoryException {
         String logFilePath = "./logs/";
 
         Scanner scanner = new Scanner(System.in);
@@ -31,8 +40,18 @@ public class CLIInterpreter {
 
         if (Objects.equals(input, "")) {
             logFilePath += "log.txt";
+
         } else  {
             logFilePath += input;
+        }
+
+        // if the file already exists, delete it and create a new one
+        File file = new File(logFilePath);
+
+        if(file.exists() && file.isFile()) {
+            if(!file.delete()) {
+                throw new RepositoryException("[!] Couldn't delete444444 the already existing log file.");
+            }
         }
 
         return logFilePath;

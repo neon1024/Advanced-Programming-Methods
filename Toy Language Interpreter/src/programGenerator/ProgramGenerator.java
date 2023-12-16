@@ -24,7 +24,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram4(),
                         ProgramGenerator.getProgram5(),
                         ProgramGenerator.getProgram6(),
-                        ProgramGenerator.getProgram7()
+                        ProgramGenerator.getProgram7(),
+                        ProgramGenerator.getProgram8()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -154,5 +155,29 @@ public class ProgramGenerator {
                 new CompoundStatement(printingV, decrementingV));
 
         return ProgramGenerator.buildProgram(declaringV, assigningV, whileStatement);
+    }
+
+    private static Statement getProgram8() {
+        // Fork statement example
+        Statement declaringV = new VariableDeclarationStatement("v", new IntType());
+        Statement declaringA = new VariableDeclarationStatement("a", new ReferenceType(new IntType()));
+
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(10)));
+        Statement allocatingA = new HeapAllocationStatement("a", new ValueExpression(new IntValue(22)));
+
+        Statement fork = new ForkStatement(
+        new CompoundStatement(new HeapWriteStatement("a", new ValueExpression(new IntValue(30))),
+                        new CompoundStatement(new AssignmentStatement("v", new ValueExpression(new IntValue(32))),
+                                new CompoundStatement(new PrintStatement(new VariableNameExpression("v")),
+                                        new PrintStatement(new HeapReadExpression(new VariableNameExpression("a")))
+                                )
+                        )
+                )
+        );
+
+        Statement printingV = new PrintStatement(new VariableNameExpression("v"));
+        Statement printingA = new PrintStatement(new HeapReadExpression(new VariableNameExpression("a")));
+
+        return buildProgram(declaringV, declaringA, assigningV, allocatingA, fork, printingV, printingA);
     }
 }

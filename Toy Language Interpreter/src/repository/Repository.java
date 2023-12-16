@@ -44,6 +44,7 @@ public class Repository implements IRepository {
     public void logProgramStateExecution(ProgramState programState) throws RepositoryException {
         try (PrintWriter logFile = new PrintWriter(new BufferedWriter(new FileWriter(this.logFilePath, true)))) {
             logFile.println(programState);
+
         } catch (IOException e) {
             throw new RepositoryException("[!] Could not open log file!");
         }

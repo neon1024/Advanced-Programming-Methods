@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Controller {
     private final IRepository repository;
     private Boolean logOutput;
-    private final ExecutorService executor = Executors.newFixedThreadPool(8);
+    private final ExecutorService executor = Executors.newFixedThreadPool(12);
 
     public Controller(IRepository repository, Boolean logOutput) {
         this.repository = repository;
@@ -43,10 +43,12 @@ public class Controller {
 
         while (!programStates.isEmpty()) {
             IStack<Statement> executionStack = programStates.get(0).getExecutionStack();
+
             try {
                 if (!(executionStack.top() instanceof CompoundStatement)) {
                     break;
                 }
+
             } catch (ADTException e) {
                 throw new RuntimeException(e);
             }
@@ -81,13 +83,17 @@ public class Controller {
                     .map(future -> {
                         try {
                             return future.get();
+
                         } catch (InterruptedException | ExecutionException e) {
                             throw new RuntimeException(e);
                         }
+
                     })
                     .filter(Objects::nonNull)
                     .toList();
+
             programStates.addAll(newProgramStates);
+
         } catch (InterruptedException e) {
             throw new ControllerException(e.getMessage());
         }
@@ -96,6 +102,7 @@ public class Controller {
             programStates.forEach(programState -> {
                 try {
                     this.repository.logProgramStateExecution(programState);
+
                 } catch (RepositoryException e) {
                     throw new RuntimeException(e);
                 }
@@ -105,12 +112,16 @@ public class Controller {
         this.repository.setProgramStateList(programStates);
     }
 
-    public void allSteps() throws ControllerException {
+    public void
+    allSteps() throws ControllerException {
         List<ProgramState> programStates = this.removeCompletedPrograms(this.repository.getProgramStateList());
+
         if (this.logOutput) {
             programStates.forEach(programState -> {
+
                 try {
                     this.repository.logProgramStateExecution(programState);
+
                 } catch (RepositoryException e) {
                     throw new RuntimeException(e);
                 }
@@ -126,6 +137,7 @@ public class Controller {
 
             try {
                 this.oneStepForAllPrograms(programStates);
+
             } catch (RuntimeException e) {
                 throw new ControllerException(e.getMessage());
             }

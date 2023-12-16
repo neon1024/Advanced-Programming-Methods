@@ -106,48 +106,50 @@ public class ProgramState {
         stringBuilder.append("Execution Stack:\n");
 
         if (this.executionStack.isEmpty()) {
-            stringBuilder.append("----------Empty----------\n");
+            stringBuilder.append("-----------------------------Empty------------------------------\n");
         } else {
             stringBuilder.append(this.executionStack);
         }
 
-        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("----------------------------------------------------------------\n\n");
         stringBuilder.append("Symbol Table:\n");
 
         if (this.tableOfSymbols.isEmpty()) {
-            stringBuilder.append("----------Empty----------\n");
+            stringBuilder.append("-----------------------------Empty------------------------------\n");
         } else {
             stringBuilder.append(this.tableOfSymbols);
         }
 
-        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("----------------------------------------------------------------\n\n");
         stringBuilder.append("Heap:\n");
 
         if (this.heap.isEmpty()) {
-            stringBuilder.append("----------Empty----------\n");
+            stringBuilder.append("-----------------------------Empty------------------------------\n");
         } else {
             stringBuilder.append(this.heap);
         }
 
-        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("----------------------------------------------------------------\n\n");
         stringBuilder.append("File Table:\n");
 
         if (this.fileTable.isEmpty()) {
-            stringBuilder.append("----------Empty----------\n");
+            stringBuilder.append("-----------------------------Empty------------------------------\n");
         } else {
             stringBuilder.append(this.fileTable);
         }
 
-        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("----------------------------------------------------------------\n\n");
         stringBuilder.append("Output:\n");
 
         if (this.output.isEmpty()) {
-            stringBuilder.append("----------Empty----------\n");
+            stringBuilder.append("-----------------------------Empty------------------------------\n");
         } else {
             stringBuilder.append(this.output);
         }
 
-        stringBuilder.append("-------------------------------------------\n");
+        stringBuilder.append("----------------------------------------------------------------\n\n");
+
+        stringBuilder.append("################################################################");
 
         return stringBuilder.toString();
     }
