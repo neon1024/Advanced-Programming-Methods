@@ -53,11 +53,11 @@ public class Controller {
                 throw new RuntimeException(e);
             }
 
-            this.repository.getHeap().setContent(
-                    this.garbageCollector(
-                            this.getAddressesFromTableOfSymbols(this.repository.getSymbolTable().values()),
-                            this.repository.getHeap().getContent()
-                    ));
+//            this.repository.getHeap().setContent(
+//                    this.garbageCollector(
+//                            this.getAddressesFromTableOfSymbols(this.repository.getSymbolTable().values()),
+//                            this.repository.getHeap().getContent()
+//                    ));
 
             try {
                 this.oneStepForAllPrograms(programStates);
@@ -129,10 +129,13 @@ public class Controller {
         }
 
         while (!programStates.isEmpty()) {
-            this.repository.getHeap().setContent(
+//            Collection<Integer> addresses = programStates.stream().flatMap(p -> this.getAddressesFromTableOfSymbols(p.getTableOfSymbols().values())).collect(Collectors.toList())
+            List<Integer> addresses = new ArrayList<>();
+            programStates.forEach(p -> addresses.addAll(this.getAddressesFromTableOfSymbols(p.getTableOfSymbols().values())));
+            programStates.get(0).getHeap().setContent(
                     this.garbageCollector(
-                            this.getAddressesFromTableOfSymbols(this.repository.getSymbolTable().values()),
-                            this.repository.getHeap().getContent()
+                            addresses,
+                            programStates.get(0).getHeap().getContent()
                     ));
 
             try {

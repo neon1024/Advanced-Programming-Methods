@@ -25,7 +25,8 @@ public class ProgramGenerator {
                         ProgramGenerator.getProgram5(),
                         ProgramGenerator.getProgram6(),
                         ProgramGenerator.getProgram7(),
-                        ProgramGenerator.getProgram8()
+                        ProgramGenerator.getProgram8(),
+                        ProgramGenerator.getProgram9()
                 ));
 
         for (int i = 0; i < programs.size(); i++) {
@@ -179,5 +180,32 @@ public class ProgramGenerator {
         Statement printingA = new PrintStatement(new HeapReadExpression(new VariableNameExpression("a")));
 
         return buildProgram(declaringV, declaringA, assigningV, allocatingA, fork, printingV, printingA);
+    }
+
+    private static Statement getProgram9() {
+        Statement declaringA = new VariableDeclarationStatement("a", new ReferenceType(new IntType()));
+
+        Statement declaringCounter = new VariableDeclarationStatement("counter", new IntType());
+
+        // Statement allocatingA = new HeapAllocationStatement("a", new VariableNameExpression("counter"));
+
+        // Statement printingA = new PrintStatement(new HeapReadExpression(new VariableNameExpression("a")));
+
+        // Statement fork = new ForkStatement(new ForkStatement(new CompoundStatement(allocatingA, printingA)));
+
+        Statement incrementingCounter = new AssignmentStatement("counter", new ArithmeticExpression("+", new VariableNameExpression("counter"), new ValueExpression(new IntValue(1))));
+
+        Statement whileStatement = new WhileStatement(
+                new RelationalExpression("<", new VariableNameExpression("counter"), new ValueExpression(new IntValue(10))),
+                new CompoundStatement(new ForkStatement(new ForkStatement(new CompoundStatement(
+                        new HeapAllocationStatement("a", new VariableNameExpression("counter")),
+                        new PrintStatement(new HeapReadExpression(new VariableNameExpression("a")))
+                         )
+                        )),
+                        new AssignmentStatement("counter", new ArithmeticExpression("+", new VariableNameExpression("counter"), new ValueExpression(new IntValue(1))))
+                )
+        );
+
+        return buildProgram(declaringA, declaringCounter, whileStatement);
     }
 }
