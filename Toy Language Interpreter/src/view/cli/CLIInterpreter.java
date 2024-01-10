@@ -50,7 +50,7 @@ public class CLIInterpreter {
 
         if(file.exists() && file.isFile()) {
             if(!file.delete()) {
-                throw new RepositoryException("[!] Couldn't delete444444 the already existing log file.");
+                throw new RepositoryException("[!] Couldn't delete the already existing log file.");
             }
         }
 
