@@ -1,10 +1,10 @@
 package model.adts;
 
-
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class MyDictionary<K, V> implements IDictionary<K, V> {
-    private final Map<K, V> map = new HashMap<>();
+public class MyConcurrentDictionary<K, V> implements IDictionary<K, V> {
+    private final Map<K, V> map = new ConcurrentHashMap<>();
 
     @Override
     public void add(K key, V value) {
@@ -42,6 +42,11 @@ public class MyDictionary<K, V> implements IDictionary<K, V> {
     }
 
     @Override
+    public Collection<Map.Entry<K, V>> entrySet() {
+        return this.map.entrySet();
+    }
+
+    @Override
     public Set<K> keys() {
         return new HashSet<>(this.map.keySet());
     }
@@ -53,11 +58,6 @@ public class MyDictionary<K, V> implements IDictionary<K, V> {
             values.add(this.map.get(key));
         }
         return values;
-    }
-
-    @Override
-    public Collection<Map.Entry<K, V>> entrySet() {
-        return this.map.entrySet();
     }
 
     @Override

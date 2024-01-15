@@ -1,7 +1,8 @@
 package model.adts;
 
 import exceptions.ADTException;
-import java.util.Stack;
+
+import java.util.*;
 
 public class MyStack<T> implements IStack<T> {
 
@@ -49,5 +50,12 @@ public class MyStack<T> implements IStack<T> {
         }
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public Collection<T> reversed() {
+        List<T> reversed = new ArrayList<>(this.stack);
+        Collections.reverse(reversed);
+        return reversed;
     }
 }

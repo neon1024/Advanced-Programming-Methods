@@ -4,6 +4,7 @@ import model.adts.IDictionary;
 import model.adts.IHeap;
 import model.adts.IList;
 import model.adts.IStack;
+import model.adts.ISyncTable;
 import exceptions.ADTException;
 import exceptions.ProgramStateException;
 import exceptions.StatementException;
@@ -20,6 +21,7 @@ public class ProgramState {
     private final IStack<Statement> executionStack;
     private final IDictionary<String, Value> tableOfSymbols;
     private final IList<Value> output;
+    private final ISyncTable lockTable;
     private final IDictionary<String, BufferedReader> fileTable;
     private final IHeap heap;
     private final int id;
@@ -28,7 +30,7 @@ public class ProgramState {
     public ProgramState(Statement originalProgram,
                         IStack<Statement> executionStack, IDictionary<String, Value> tableOfSymbols,
                         IHeap heap, IDictionary<String, BufferedReader> fileTable,
-                        IList<Value> output) {
+                        IList<Value> output, ISyncTable lockTable) {
 
         this.originalProgram = originalProgram.deepCopy();
         this.executionStack = executionStack;
@@ -36,6 +38,7 @@ public class ProgramState {
         this.output = output;
         this.fileTable = fileTable;
         this.heap = heap;
+        this.lockTable = lockTable;
 
         this.id = ProgramState.generateNewId();
         executionStack.push(originalProgram);
@@ -60,6 +63,10 @@ public class ProgramState {
         return this.id;
     }
 
+    public Statement getOriginalProgram() {
+        return this.originalProgram;
+    }
+
     public IStack<Statement> getExecutionStack() {
         return this.executionStack;
     }
@@ -78,6 +85,10 @@ public class ProgramState {
 
     public IHeap getHeap() {
         return this.heap;
+    }
+
+    public ISyncTable getLockTable() {
+        return this.lockTable;
     }
 
     public boolean isNotCompleted() {

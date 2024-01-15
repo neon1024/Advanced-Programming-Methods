@@ -24,7 +24,7 @@ public class ForkStatement implements Statement {
         MyStack<Statement> newExecutionStack = new MyStack<>();
         IDictionary<String, Value> newTableOfSymbols = programState.getTableOfSymbols().deepCopy();
 
-        return new ProgramState(this.statement, newExecutionStack, newTableOfSymbols, programState.getHeap(), programState.getFileTable(), programState.getOutput());
+        return new ProgramState(this.statement, newExecutionStack, newTableOfSymbols, programState.getHeap(), programState.getFileTable(), programState.getOutput(), programState.getLockTable());
     }
 
     @Override

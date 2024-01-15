@@ -1,6 +1,9 @@
 package model.adts;
 
 import exceptions.ADTException;
+import model.statements.Statement;
+
+import java.util.Collection;
 
 public interface IStack<T> {
 
@@ -13,4 +16,6 @@ public interface IStack<T> {
     int size();
 
     boolean isEmpty();
+
+    Collection<T> reversed();
 }

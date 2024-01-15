@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6863ac26-9ee6-403d-ae3c-2d49a487a9ae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/model/adts/ISyncTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/adts/MyConcurrentDictionary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/adts/MyLockTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/gui/GuiInterpreter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/gui/MainWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/gui/SelectWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/gui/tableEntry/HeapTableEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/gui/tableEntry/LockTableEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/gui/tableEntry/SymbolTableEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Toy Language Interpreter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Toy Language Interpreter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProgramState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProgramState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/adts/IDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/adts/IDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/adts/IStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/adts/IStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/adts/MyDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/adts/MyDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/adts/MyStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/adts/MyStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/statements/ForkStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/statements/ForkStatement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/cli/CLIInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/cli/CLIInterpreter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,23 +54,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/rober/Desktop/JavaFX/javafx-sdk-21.0.1/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,6 +88,7 @@
       <workItem from="1702919343547" duration="4420000" />
       <workItem from="1703628047397" duration="86000" />
       <workItem from="1704730300829" duration="3113000" />
+      <workItem from="1705328859849" duration="4123000" />
     </task>
     <servers />
   </component>
@@ -86,5 +105,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
