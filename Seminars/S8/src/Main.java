@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Main {
 
         // TODO OR
         // morphed_to_string.stream().reduce("", String::concat); TODO "" is the collector, like a starting variable where the result is stored
-
+        concatenated_strings = morphed_to_string.stream().reduce("", (a, b) -> a + "" + b);
         System.out.println(concatenated_strings);
 
         // 3.
@@ -48,6 +49,8 @@ public class Main {
 
         // c)
         int sum = to_succesor.stream().filter(n -> n % 4 != 0).map(n -> n + 1).reduce(0, Integer::sum) % 2;
+        // or
+        sum = to_succesor.stream().filter(n -> n % 4 != 0).map(n -> n + 1).reduce(0, (a, b) -> a + b) % 2;
 
         // TODO Threads
         Thread thread = new Thread();
@@ -55,5 +58,9 @@ public class Main {
         thread.run();  // serial
         thread.start();  // parallel
         thread.join();  // wait for the thread
+
+        List<String> strings = new ArrayList<>();
+
+        
     }
 }
